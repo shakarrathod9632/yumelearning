@@ -3,7 +3,7 @@
 {% block content %}
 
 <!-- ===================== PROFESSIONAL HERO CAROUSEL ===================== -->
-{% comment %} <div class="hero-carousel-container">
+ <div class="hero-carousel-container">
   <div class="hero-carousel-track">
 
     <!-- Clone Last Slide -->
@@ -26,7 +26,7 @@
 
     <!-- Slide 2 -->
     <div class="hero-slide">
-      <img src="{% static 'images/s7.jpg' %}" class="hero-slide-img" />
+      <img src="{% static 'images/s9.jpg' %}" class="hero-slide-img" />
       <div class="hero-overlay">
         <h2>India’s Fast-Growing EdTech Platform</h2>
         <p>Career transformation with practical training.</p>
@@ -65,10 +65,9 @@
   <!-- Navigation -->
   <button class="hero-nav-btn hero-prev">❮</button>
   <button class="hero-nav-btn hero-next">❯</button>
-</div>  {% endcomment %}
+</div>  
 
-
-<div class="hero-carousel-container">
+{% comment %} <div class="hero-carousel-container">
   <div class="hero-carousel-track">
 
     {% if hero_slides|length > 1 %}
@@ -116,7 +115,7 @@
   <!-- Navigation -->
   <button class="hero-nav-btn hero-prev">❮</button>
   <button class="hero-nav-btn hero-next">❯</button>
-</div>
+</div> {% endcomment %}
 
 
 <style>

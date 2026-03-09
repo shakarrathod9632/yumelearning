@@ -12,7 +12,7 @@
             <h2>Enquire Now</h2>
           </div>
           
-          <!-- Enquiry Form -->
+          {% comment %} <!-- Enquiry Form -->
           <form id="enquiryForm" method="POST">
             {% csrf_token %}
             
@@ -55,12 +55,85 @@
               </div>
             </div>
           </form>
-          <div id="enquiryFormMessage" class="form-message"></div>
+          <div id="enquiryFormMessage" class="form-message"></div> {% endcomment %}
+
+
+
+
+
+
+
+          <!-- Enquiry Form -->
+          <form id="enquiryForm">
+
+            <div class="form-grid">
+
+              <!-- Personal Information -->
+              <div class="form-row">
+                <div class="form-group">
+                  <input type="text" class="form-control"
+                  name="first_name" placeholder="First name">
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control"
+                  name="last_name" placeholder="Last name">
+                </div>
+              </div>
+
+              <!-- Contact Information -->
+              <div class="form-row">
+                <div class="form-group">
+                  <input type="email" class="form-control"
+                  name="email" placeholder="Email address">
+                </div>
+
+                <div class="form-group">
+                  <input type="tel" class="form-control"
+                  name="mobile" placeholder="Mobile number (10 digits)">
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div class="form-group full-width">
+                <textarea class="form-control"
+                name="message" placeholder="Your message or enquiry"
+                rows="4"></textarea>
+              </div>
+
+              <!-- Submit -->
+              <div class="submit-section">
+                <button type="submit" class="submit-btn">
+                  Submit Enquiry
+                </button>
+              </div>
+
+            </div>
+
+          </form>
+
+          <div id="enquiryFormMessage" class="form-message mt-3"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
+
+<!-- static enquiry Form -->
+<script>
+    document.getElementById("enquiryForm").addEventListener("submit", function(e){
+
+        e.preventDefault(); // stop sending to server
+
+        document.getElementById("enquiryFormMessage").innerHTML =
+            '<div class="alert alert-success">✅ Thank you! Your enquiry has been submitted successfully.</div>';
+
+        this.reset(); // clear form
+
+    });
+</script>
 
 <style>
 
@@ -390,37 +463,39 @@
   }
 </style>
 
-<script>
-document.getElementById("enquiryForm").addEventListener("submit", function(e) {
-    e.preventDefault();
 
-    const form = this;
-    const messageBox = document.getElementById("enquiryFormMessage");
+<!-- dynamic Enquiry Form -->
+{% comment %} <script>
+    document.getElementById("enquiryForm").addEventListener("submit", function(e) {
+        e.preventDefault();
 
-    fetch("{% url 'enquire_now' %}", {
-        method: "POST",
-        headers: {
-            "X-Requested-With": "XMLHttpRequest"
-        },
-        body: new FormData(form)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === "success") {
+        const form = this;
+        const messageBox = document.getElementById("enquiryFormMessage");
+
+        fetch("{% url 'enquire_now' %}", {
+            method: "POST",
+            headers: {
+                "X-Requested-With": "XMLHttpRequest"
+            },
+            body: new FormData(form)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                messageBox.innerHTML =
+                    `<div class="success-msg">${data.message}</div>`;
+                form.reset();
+            } else {
+                messageBox.innerHTML =
+                    `<div class="error-msg">${data.message}</div>`;
+            }
+        })
+        .catch(() => {
             messageBox.innerHTML =
-                `<div class="success-msg">${data.message}</div>`;
-            form.reset();
-        } else {
-            messageBox.innerHTML =
-                `<div class="error-msg">${data.message}</div>`;
-        }
-    })
-    .catch(() => {
-        messageBox.innerHTML =
-            `<div class="error-msg">Server error. Please try again later.</div>`;
+                `<div class="error-msg">Server error. Please try again later.</div>`;
+        });
     });
-});
-</script>
+</script> {% endcomment %}
 
 
 {% endblock %}

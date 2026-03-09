@@ -256,7 +256,7 @@
             </div>
 
 
-            {% for project in project_cards %}
+            {% comment %} {% for project in project_cards %}
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:"1" }}00">
                     <div class="project-card" data-aos="zoom-in" data-aos-delay="{{ forloop.counter|add:"1" }}50">
                         <!-- Project Image -->
@@ -293,7 +293,7 @@
                     </div>
                 </div>
             {% endfor %}
-           
+            {% endcomment %}
 
     </div>
 </section>

@@ -1,32 +1,36 @@
 from django.shortcuts import render
-from .models import Course
+# from .models import Course
 
-from .models import HeroSlide
+# from .models import HeroSlide
 
+# def home_page(request):
+#     hero_slides = HeroSlide.objects.filter(is_active=True).order_by("order")
+#     return render(request, "home.html", {
+#         "hero_slides": hero_slides
+#     })
+    
 def home_page(request):
-    hero_slides = HeroSlide.objects.filter(is_active=True).order_by("order")
-    return render(request, "home.html", {
-        "hero_slides": hero_slides
-    })
+    return render(request, "home.html")
 
 
-from django.shortcuts import render
-from .models import Advisor, GalleryImage
+# from django.shortcuts import render
+# from .models import Advisor, GalleryImage
+
+# def about_page(request):
+#     """About page with dynamic advisors and gallery"""
+    
+#     advisors = Advisor.objects.filter(is_active=True).order_by('display_order', 'created_at')
+#     gallery_images = GalleryImage.objects.filter(is_active=True).order_by('display_order', 'created_at')
+    
+#     context = {
+#         "advisors": advisors,
+#         "gallery_images": gallery_images,
+#     }
+#     return render(request, "about.html", context)
+
 
 def about_page(request):
-    """About page with dynamic advisors and gallery"""
-    
-    advisors = Advisor.objects.filter(is_active=True).order_by('display_order', 'created_at')
-    gallery_images = GalleryImage.objects.filter(is_active=True).order_by('display_order', 'created_at')
-    
-    context = {
-        "advisors": advisors,
-        "gallery_images": gallery_images,
-    }
-    return render(request, "about.html", context)
-
-
-
+    return render(request, "about.html")
 
 
 def courses_page(request):
@@ -82,8 +86,8 @@ def bridgetech_project(request):
 def placements_page(request):
     return render(request, "placements.html")
 
-# def contact_page(request):
-#     return render(request, "contact.html")
+def contact_page(request):
+    return render(request, "contact.html")
 
 
 
@@ -115,47 +119,47 @@ def placements_page(request):
 #     })
     
 
-from django.shortcuts import render
-from .models import PlacementsSection, InternshipSection
+# from django.shortcuts import render
+# from .models import PlacementsSection, InternshipSection
 
 
-def placements_page(request):
-    placements_section = (
-        PlacementsSection.objects
-        .filter(is_active=True)
-        .order_by('display_order')
-        .first()
-    )
+# def placements_page(request):
+#     placements_section = (
+#         PlacementsSection.objects
+#         .filter(is_active=True)
+#         .order_by('display_order')
+#         .first()
+#     )
 
-    company_logos = []
-    many_more_section = None
+#     company_logos = []
+#     many_more_section = None
 
-    if placements_section:
-        company_logos = placements_section.company_logos.filter(is_active=True)
-        many_more_section = placements_section.many_more_section.filter(is_active=True).first()
+#     if placements_section:
+#         company_logos = placements_section.company_logos.filter(is_active=True)
+#         many_more_section = placements_section.many_more_section.filter(is_active=True).first()
 
-    internship_section = (
-        InternshipSection.objects
-        .filter(is_active=True)
-        .order_by('display_order')
-        .first()
-    )
+#     internship_section = (
+#         InternshipSection.objects
+#         .filter(is_active=True)
+#         .order_by('display_order')
+#         .first()
+#     )
 
-    internship_benefits = internship_section.benefits.all() if internship_section else None
+#     internship_benefits = internship_section.benefits.all() if internship_section else None
 
-    return render(request, "placements.html", {
-        "placements_section": placements_section,
-        "company_logos": company_logos,          # ✅ FIX
-        "many_more_section": many_more_section,  # ✅ FIX
-        "internship_section": internship_section,
-        "internship_benefits": internship_benefits,
-    })
+#     return render(request, "placements.html", {
+#         "placements_section": placements_section,
+#         "company_logos": company_logos,          # ✅ FIX
+#         "many_more_section": many_more_section,  # ✅ FIX
+#         "internship_section": internship_section,
+#         "internship_benefits": internship_benefits,
+#     })
 
 
 
-def courses_page(request):
-    courses = Course.objects.filter(is_active=True).order_by('order')
-    return render(request, 'courses.html', {'courses': courses})
+# def courses_page(request):
+#     courses = Course.objects.filter(is_active=True).order_by('order')
+#     return render(request, 'courses.html', {'courses': courses})
 
 
 
@@ -165,17 +169,17 @@ def faqs(request):
 
 # Add these functions to your existing yume_site/views.py
 
-from .models import DynamicBlog
-from django.shortcuts import get_object_or_404
+# from .models import DynamicBlog
+# from django.shortcuts import get_object_or_404
 
-def blog(request):
-    """Show all blogs (static + dynamic)"""
-    # Get all published dynamic blogs
-    dynamic_blogs = DynamicBlog.objects.filter(is_published=True).order_by('display_order', '-publish_date')
+# def blog(request):
+#     """Show all blogs (static + dynamic)"""
+#     # Get all published dynamic blogs
+#     dynamic_blogs = DynamicBlog.objects.filter(is_published=True).order_by('display_order', '-publish_date')
     
-    return render(request, "blog.html", {
-        "dynamic_blogs": dynamic_blogs
-    })
+#     return render(request, "blog.html", {
+#         "dynamic_blogs": dynamic_blogs
+#     })
 
 
 # def dynamic_blog_detail(request, slug):
@@ -193,36 +197,37 @@ def blog(request):
 #         "related_blogs": related_blogs
 #     })
     
-def dynamic_blog_detail(request, slug):
-    """Show dynamic blog detail page"""
-    blog_post = get_object_or_404(DynamicBlog, slug=slug, is_published=True)
+# def dynamic_blog_detail(request, slug):
+#     """Show dynamic blog detail page"""
+#     blog_post = get_object_or_404(DynamicBlog, slug=slug, is_published=True)
     
-    # Get related blogs (same category)
-    related_blogs = DynamicBlog.objects.filter(
-        category=blog_post.category,
-        is_published=True
-    ).exclude(id=blog_post.id).order_by('-publish_date')[:3]
+#     # Get related blogs (same category)
+#     related_blogs = DynamicBlog.objects.filter(
+#         category=blog_post.category,
+#         is_published=True
+#     ).exclude(id=blog_post.id).order_by('-publish_date')[:3]
     
-    # Get previous blog
-    previous_blog = DynamicBlog.objects.filter(
-        publish_date__lt=blog_post.publish_date,
-        is_published=True
-    ).order_by('-publish_date').first()
+#     # Get previous blog
+#     previous_blog = DynamicBlog.objects.filter(
+#         publish_date__lt=blog_post.publish_date,
+#         is_published=True
+#     ).order_by('-publish_date').first()
     
-    # Get next blog
-    next_blog = DynamicBlog.objects.filter(
-        publish_date__gt=blog_post.publish_date,
-        is_published=True
-    ).order_by('publish_date').first()
+#     # Get next blog
+#     next_blog = DynamicBlog.objects.filter(
+#         publish_date__gt=blog_post.publish_date,
+#         is_published=True
+#     ).order_by('publish_date').first()
     
-    return render(request, "blog_detail.html", {
-        "blog": blog_post,
-        "related_blogs": related_blogs,
-        "previous_blog": previous_blog,
-        "next_blog": next_blog
-    })
+#     return render(request, "blog_detail.html", {
+#         "blog": blog_post,
+#         "related_blogs": related_blogs,
+#         "previous_blog": previous_blog,
+#         "next_blog": next_blog
+#     })
 
-
+def blog(request):
+    return render(request, "blog.html")
 
 # Keep all your existing static blog views (they remain unchanged)
 def excel_blog(request):
@@ -300,161 +305,175 @@ def enquire_now(request):
 
 #     return render(request, "contact.html")
 
-from django.shortcuts import render
-from django.http import JsonResponse
-from .models import ContactMessage, ContactInformation
+# from django.shortcuts import render
+# from django.http import JsonResponse
+# from .models import ContactMessage, ContactInformation
 
 
-def contact_page(request):
+# def contact_page(request):
 
-    contact_info = ContactInformation.objects.first()
+#     contact_info = ContactInformation.objects.first()
 
-    if request.method == "POST":
-        try:
-            ContactMessage.objects.create(
-                first_name=request.POST.get('first_name'),
-                last_name=request.POST.get('last_name'),
-                phone=request.POST.get('phone'),
-                email=request.POST.get('email'),
-                message=request.POST.get('message')
-            )
+#     if request.method == "POST":
+#         try:
+#             ContactMessage.objects.create(
+#                 first_name=request.POST.get('first_name'),
+#                 last_name=request.POST.get('last_name'),
+#                 phone=request.POST.get('phone'),
+#                 email=request.POST.get('email'),
+#                 message=request.POST.get('message')
+#             )
 
-            return JsonResponse({
-                "status": "success",
-                "message": "Thank you! Your message has been sent successfully."
-            })
+#             return JsonResponse({
+#                 "status": "success",
+#                 "message": "Thank you! Your message has been sent successfully."
+#             })
 
-        except Exception:
-            return JsonResponse({
-                "status": "error",
-                "message": "Something went wrong. Please try again."
-            })
+#         except Exception:
+#             return JsonResponse({
+#                 "status": "error",
+#                 "message": "Something went wrong. Please try again."
+#             })
 
-    return render(request, "contact.html", {
-        "contact_info": contact_info
-    })
-
-
+#     return render(request, "contact.html", {
+#         "contact_info": contact_info
+#     })
 
 
-from django.shortcuts import render
-from django.http import JsonResponse
-from .models import Enrollment
+
+
+# from django.shortcuts import render
+# from django.http import JsonResponse
+# from .models import Enrollment
+
+# def enrollment_form(request):
+
+#     # 👉 POST: Save data (AJAX)
+#     if request.method == "POST":
+#         try:
+#             Enrollment.objects.create(
+#                 first_name=request.POST.get('first_name'),
+#                 last_name=request.POST.get('last_name'),
+#                 email=request.POST.get('email'),
+#                 mobile=request.POST.get('mobile'),
+#                 education=request.POST.get('education'),
+#                 course=request.POST.get('course'),
+#             )
+#             return JsonResponse({
+#                 'status': 'success',
+#                 'message': 'Enrollment completed successfully!'
+#             })
+#         except Exception as e:
+#             return JsonResponse({
+#                 'status': 'error',
+#                 'message': 'Something went wrong. Please try again.'
+#             })
+
+#     # 👉 GET: Show enrollment page
+#     return render(request, "enrollment_form.html")
+
 
 def enrollment_form(request):
-
-    # 👉 POST: Save data (AJAX)
-    if request.method == "POST":
-        try:
-            Enrollment.objects.create(
-                first_name=request.POST.get('first_name'),
-                last_name=request.POST.get('last_name'),
-                email=request.POST.get('email'),
-                mobile=request.POST.get('mobile'),
-                education=request.POST.get('education'),
-                course=request.POST.get('course'),
-            )
-            return JsonResponse({
-                'status': 'success',
-                'message': 'Enrollment completed successfully!'
-            })
-        except Exception as e:
-            return JsonResponse({
-                'status': 'error',
-                'message': 'Something went wrong. Please try again.'
-            })
-
-    # 👉 GET: Show enrollment page
     return render(request, "enrollment_form.html")
 
 
 
+# from django.shortcuts import render
+# from django.http import JsonResponse
+# from .models import Enquiry
 
-from django.shortcuts import render
-from django.http import JsonResponse
-from .models import Enquiry
+# def enquire_now(request):
+
+#     if request.method == "POST":
+#         try:
+#             Enquiry.objects.create(
+#                 first_name=request.POST.get('first_name'),
+#                 last_name=request.POST.get('last_name'),
+#                 email=request.POST.get('email'),
+#                 mobile=request.POST.get('mobile'),
+#                 message=request.POST.get('message'),
+#             )
+
+#             return JsonResponse({
+#                 "status": "success",
+#                 "message": "Thank you! Your enquiry has been submitted successfully."
+#             })
+
+#         except Exception:
+#             return JsonResponse({
+#                 "status": "error",
+#                 "message": "Something went wrong. Please try again."
+#             })
+
+#     return render(request, "enquire_now.html")
+
 
 def enquire_now(request):
-
-    if request.method == "POST":
-        try:
-            Enquiry.objects.create(
-                first_name=request.POST.get('first_name'),
-                last_name=request.POST.get('last_name'),
-                email=request.POST.get('email'),
-                mobile=request.POST.get('mobile'),
-                message=request.POST.get('message'),
-            )
-
-            return JsonResponse({
-                "status": "success",
-                "message": "Thank you! Your enquiry has been submitted successfully."
-            })
-
-        except Exception:
-            return JsonResponse({
-                "status": "error",
-                "message": "Something went wrong. Please try again."
-            })
-
     return render(request, "enquire_now.html")
-
-
-
     
 
 
 
-from django.shortcuts import render, get_object_or_404
-from .models import Course
+# from django.shortcuts import render, get_object_or_404
+# from .models import Course
 
-def course_detail(request, course_url):
-    course = get_object_or_404(
-        Course,
-        course_url=course_url,
-        is_active=True
-    )
+# def course_detail(request, course_url):
+#     course = get_object_or_404(
+#         Course,
+#         course_url=course_url,
+#         is_active=True
+#     )
 
-    curriculum_months = course.curriculum_months.filter(
-        is_active=True
-    ).prefetch_related(
-        "sections__topics"
-    )
+#     curriculum_months = course.curriculum_months.filter(
+#         is_active=True
+#     ).prefetch_related(
+#         "sections__topics"
+#     )
 
-    return render(
-        request,
-        "course_detail.html",
-        {
-            "course": course,
-            "curriculum_months": curriculum_months,
-        }
-    )
+#     return render(
+#         request,
+#         "course_detail.html",
+#         {
+#             "course": course,
+#             "curriculum_months": curriculum_months,
+#         }
+#     )
 
 
 
-from django.shortcuts import render, get_object_or_404
-from .models import ProjectCard
+def course_detail(request):
+    return render(request, "courses.html")
+
+
+
+
+# from django.shortcuts import render, get_object_or_404
+# from .models import ProjectCard
+
+
+# def projects_page(request):
+#     """Show all active project cards"""
+#     project_cards = ProjectCard.objects.filter(is_active=True).order_by('display_order')
+    
+#     return render(request, "projects.html", {
+#         "project_cards": project_cards
+#     })
+
+
+# def project_detail(request, slug):
+#     """Show project detail page"""
+#     project_card = get_object_or_404(ProjectCard, slug=slug, is_active=True)
+    
+#     # Get detail page if it exists
+#     detail_page = None
+#     if hasattr(project_card, 'detail_page'):
+#         detail_page = project_card.detail_page
+    
+#     return render(request, "project_detail.html", {
+#         "project_card": project_card,
+#         "detail_page": detail_page
+#     })
 
 
 def projects_page(request):
-    """Show all active project cards"""
-    project_cards = ProjectCard.objects.filter(is_active=True).order_by('display_order')
-    
-    return render(request, "projects.html", {
-        "project_cards": project_cards
-    })
-
-
-def project_detail(request, slug):
-    """Show project detail page"""
-    project_card = get_object_or_404(ProjectCard, slug=slug, is_active=True)
-    
-    # Get detail page if it exists
-    detail_page = None
-    if hasattr(project_card, 'detail_page'):
-        detail_page = project_card.detail_page
-    
-    return render(request, "project_detail.html", {
-        "project_card": project_card,
-        "detail_page": detail_page
-    })
+    return render(request, "projects.html")

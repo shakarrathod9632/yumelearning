@@ -10,8 +10,7 @@ urlpatterns = [
     path("about/", views.about_page, name="about"),
     path("courses/", views.courses_page, name="courses"),
     
-    path('courses/<str:course_url>/', course_detail, name='course_detail'),
-
+    # path('courses/<str:course_url>/', course_detail, name='course_detail'),
 
 
     path("courses/excel-data-analysis/", views.excel_course, name="excel"),
@@ -57,7 +56,7 @@ urlpatterns = [
     
      # Blog URLs
     path("blog/", views.blog, name="blog"),
-    path("blog/dynamic/<slug:slug>/", views.dynamic_blog_detail, name="dynamic_blog_detail"),
+    # path("blog/dynamic/<slug:slug>/", views.dynamic_blog_detail, name="dynamic_blog_detail"),
     
     path("excel_blog/", views.excel_blog, name="excel_blog"),
     path("sql_blog/", views.sql_blog, name="sql_blog"),
@@ -87,7 +86,7 @@ urlpatterns = [
     # path('<slug:slug>/', views.project_detail, name='project_detail'),
     
     path("projects/", views.projects_page, name="projects"),
-    path('projects/<slug:slug>/', views.project_detail, name='project_detail'),
+    # path('projects/<slug:slug>/', views.project_detail, name='project_detail'),
     
  
 ]
