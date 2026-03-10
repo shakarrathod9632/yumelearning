@@ -3205,7 +3205,7 @@
             <div class="col-lg-4 col-md-6 gallery-item hidden-item" data-aos="fade-up" data-aos-delay="400" data-index="3">
                 <div class="gallery-card">
                     <div class="image-wrapper">
-                        <img src="{% static 'images/gallery_images/g4.jpeg' %}" 
+                        <img src="{% static 'images/gallery_images/g4.jpg' %}" 
                              alt="Gallery Image 4" 
                              class="gallery-img"
                              loading="lazy"
@@ -3223,7 +3223,7 @@
             <div class="col-lg-4 col-md-6 gallery-item hidden-item" data-aos="fade-up" data-aos-delay="500" data-index="4">
                 <div class="gallery-card">
                     <div class="image-wrapper">
-                        <img src="{% static 'images/gallery_images/g5.jpeg' %}" 
+                        <img src="{% static 'images/gallery_images/g5.jpg' %}" 
                              alt="Gallery Image 5" 
                              class="gallery-img"
                              loading="lazy"
@@ -3237,7 +3237,7 @@
                 </div>
             </div>
 
-            <!-- Image 6 (Hidden initially) - Using more images from your folder -->
+            {% comment %} <!-- Image 6 (Hidden initially) - Using more images from your folder -->
             <div class="col-lg-4 col-md-6 gallery-item hidden-item" data-aos="fade-up" data-aos-delay="600" data-index="5">
                 <div class="gallery-card">
                     <div class="image-wrapper">
@@ -3307,7 +3307,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>
 
         <!-- Load More Button -->
@@ -3355,11 +3355,11 @@
         
         // Gallery images array with all available images
         const galleryImages = [
-            "{% static 'images/data_analytics.png' %}",
-            "{% static 'images/about_us.jpg' %}",
-            "{% static 'images/about_page_img2.jpg' %}",
-            "{% static 'images/about_2.jpg' %}",
-            "{% static 'images/about.jpg' %}"
+            "{% static 'images/gallery_images/g1.jpeg' %}",
+            "{% static 'images/gallery_images/g2.jpeg' %}",
+            "{% static 'images/gallery_images/g3.jpeg' %}",
+            "{% static 'images/gallery_images/g4.jpg' %}",
+            "{% static 'images/gallery_images/g5.jpg' %}",
         ];
         
         let currentIndex = 0;
