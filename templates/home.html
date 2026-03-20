@@ -2097,98 +2097,301 @@
 
 
 <style>
-  /* ========== WHY CHOOSE US (HORIZONTAL) ========== */
-.why-choose-us {
-  background: #ffffff;
-  padding: 50px 20px;
-  font-family: "Montserrat", Arial, sans-serif;
-}
+      /* ========== WHY CHOOSE US (HORIZONTAL) ========== */
+    .why-choose-us {
+      background: #ffffff;
+      padding: 50px 20px;
+      font-family: "Montserrat", Arial, sans-serif;
+    }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-}
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
 
-/* TITLE */
-.why-title {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
+    /* TITLE */
+    .why-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
 
-.why-title .highlight {
-  color: rgb(5, 201, 254);
-}
+    .why-title .highlight {
+      color: rgb(5, 201, 254);
+    }
 
-/* SUBTITLE */
-.why-subtitle {
-  text-align: center;
-  font-size: 0.95rem;
-  color: #666;
-  margin-bottom: 32px;
-}
+    /* SUBTITLE */
+    .why-subtitle {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 32px;
+    }
 
-/* GRID */
-.why-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 26px 32px;
-}
+    /* GRID */
+    .why-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px 32px;
+    }
 
-/* FEATURE ITEM */
-.why-feature {
-  position: relative;
-  padding-left: 16px;
-}
+    /* FEATURE ITEM */
+    .why-feature {
+      position: relative;
+      padding-left: 16px;
+    }
 
-/* ACCENT LINE */
-.why-feature::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 4px;
-  width: 3px;
-  height: 42px;
-  background: rgb(5, 201, 254);
-  border-radius: 2px;
-}
+    /* ACCENT LINE */
+    .why-feature::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      width: 3px;
+      height: 42px;
+      background: rgb(5, 201, 254);
+      border-radius: 2px;
+    }
 
-/* TEXT */
-.why-feature h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #222;
-}
+    /* TEXT */
+    .why-feature h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #222;
+    }
 
-.why-feature p {
-  font-size: 0.82rem;
-  color: #555;
-  line-height: 1.4;
-}
+    .why-feature p {
+      font-size: 0.82rem;
+      color: #555;
+      line-height: 1.4;
+    }
 
-/* ========== RESPONSIVE ========== */
-@media (max-width: 900px) {
-  .why-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .why-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-@media (max-width: 600px) {
-  .why-row {
-    grid-template-columns: 1fr;
-  }
+    @media (max-width: 600px) {
+      .why-row {
+        grid-template-columns: 1fr;
+      }
 
-  .why-title {
-    font-size: 1.7rem;
-  }
-}
+      .why-title {
+        font-size: 1.7rem;
+      }
+    }
 
 </style>
 
 
 
+<!-- ================= ULTRA RESPONSIVE AD POPUP ================= -->
+<style>
+
+/* ===== OVERLAY ===== */
+.ad-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 10px;
+}
+
+/* ===== MAIN BOX ===== */
+.ad-box {
+  width: 75%;
+  max-width: 950px;
+  background: #fff;
+  border-radius: 16px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  animation: popupFade 0.3s ease;
+  position: relative;
+}
+
+/* ===== IMAGE SIDE ===== */
+.ad-left {
+  width: 45%;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ad-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* FIXED: no cropping */
+  padding: 10px;
+}
+
+/* ===== CONTENT SIDE ===== */
+.ad-right {
+  width: 55%;
+  padding: 32px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ===== TITLE ===== */
+.ad-right h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0B3C73;
+  margin-bottom: 16px;
+}
+
+/* ===== TEXT ===== */
+.ad-right p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+/* ===== HIGHLIGHTS ===== */
+.ad-right strong {
+  color: #F26B1D;
+}
+
+/* ===== SMALL TEXT ===== */
+.ad-small {
+  font-size: 13px;
+  color: #777;
+  margin-top: 10px;
+}
+
+/* ===== CLOSE BUTTON ===== */
+.ad-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 18px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 50%;
+  padding: 6px 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* ===== ANIMATION ===== */
+@keyframes popupFade {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ================= MOBILE OPTIMIZATION ================= */
+@media (max-width: 768px) {
+
+  .ad-box {
+    flex-direction: column;
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  /* IMAGE SMALL & CLEAN */
+  .ad-left {
+    width: 100%;
+    height: 180px;
+  }
+
+  .ad-left img {
+    object-fit: contain;
+    padding: 8px;
+  }
+
+  /* CONTENT COMPACT */
+  .ad-right {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .ad-right h2 {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  .ad-right p {
+    font-size: 11px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .ad-small {
+    font-size: 11.5px;
+  }
+}
+
+</style>
+
+<!-- ===== HTML ===== -->
+<div id="adPopup" class="ad-popup">
+  <div class="ad-box">
+
+    <!-- CLOSE -->
+    <span class="ad-close" onclick="closeAd()">✖</span>
+
+    <!-- IMAGE -->
+    <div class="ad-left">
+      <img src="{% static 'images/add_photo.jpg' %}" alt="Valedictory Event">
+    </div>
+
+    <!-- CONTENT -->
+    <div class="ad-right">
+      
+      <h2>🎓 Valedictory Ceremony</h2>
+
+      <p>
+        Celebrating the successful completion of our skilling program 
+        by students from GFGC campuses.
+      </p>
+
+      <p>
+        With <strong>180 hours of hands-on learning</strong> and real-world projects, 
+        students achieved <strong>Gold & Silver Certifications</strong>.
+      </p>
+
+      <p>
+        Now progressing to the <strong>next phase in the 6th semester</strong>.
+      </p>
+
+      <p class="ad-small">
+        Supported by Nasscom Foundation, ITC Infotech Aspire, DCE & FutureSkills Prime.
+      </p>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== JS ===== -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("adPopup").style.display = "flex";
+});
+
+function closeAd() {
+  document.getElementById("adPopup").style.display = "none";
+}
+</script>
 
 
 {% endblock %}
